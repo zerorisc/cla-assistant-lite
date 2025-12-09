@@ -74,4 +74,9 @@ export default async function getCommitters(): Promise<CommittersDetails[]> {
     }
 
 }
-const extractUserFromCommit = (commit) => commit.author.user || commit.committer.user || commit.author || commit.committer
+// Signature check protocol only checks for a signature by the committer, not
+// all authors of code being merged in. This allows the repository to accept
+// code from other Apache-licensed projects and maintain the original Git
+// history without requiring a signature from code authors who are not
+// contributors to the accepting repository.
+const extractUserFromCommit = (commit) => commit.committer.user || commit.committer
