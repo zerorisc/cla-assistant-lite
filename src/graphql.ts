@@ -17,15 +17,6 @@ export default async function getCommitters(): Promise<CommittersDetails[]> {
                     edges {
                         node {
                             commit {
-                                author {
-                                    email
-                                    name
-                                    user {
-                                        id
-                                        databaseId
-                                        login
-                                    }
-                                }
                                 committer {
                                     name
                                     user {
